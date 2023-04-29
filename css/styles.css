@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500&family=Unbounded:wght@400;700&family=Ysabeau:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Font Families:
+
+font-family: 'Bitter', serif;
+font-family: 'Unbounded', cursive;
+font-family: 'Ysabeau', sans-serif;
+
+*/
+
+/* TYPOGRAPHY */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+h1 {
+  font-family: 'Unbounded', cursive;
+  font-size: 2.6em;
+  line-height: 2em;
+}
+
+h2 {
+  font-family: 'Bitter', serif;
+  border-bottom: 1px solid #967508;
+  letter-spacing: 2px;
+}
+/* END TYPOGRAPHY */
+
+
+html {
+  width: 100%;
+  font-family: 'Ysabeau', sans-serif;
+  font-size: 20px;
+  color: #fff;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  margin: 0;
+  padding: 0;
+  background: repeating-linear-gradient(0deg, #331103, #330333, #331103);
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+li {
+  font-weight: bold;
+  padding: 0.3em;
+}
+
+li:hover {
+  animation: backgroundEase 0.5s both;
+}
+
+@keyframes backgroundEase {
+  from {
+    color:#000;
+    background-color: rgba(0,0,0,0);
+  }
+
+  to {
+    color: #fff;
+    background-color: rgba(0,0,0,0.8)
+  }
+}
+
+@keyframes activeView {
+  0% {
+    background-position: top;
+  }
+
+  50% {
+    background-position: bottom;
+  }
+
+  100% {
+    background-position: top;
+  }
+}
+
+@keyframes activeViewMotion {
+  0% {
+    border-radius: 100%;
+    transform: scale(1) rotate(0deg) translate(2em);
+  }
+  25% {
+    border-radius: 0%;
+  }
+  50% {
+    border-radius: 0%;
+    transform: scale(1.5) rotate(360deg) translate(-2em); 
+   }
+  75% {
+    border-radius: 0%;
+  }
+  100% {
+    border-radius: 100%;
+    transform: scale(1) rotate(0deg) translate(2em);
+    }
+}
+
+main {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 40vh;
+  margin-bottom: 30vh;
+  padding: 10vh 1em 0;
+}
+
+.main--section {
+  width: 100%;
+  min-height: 70vh;
+  max-height: fit-content;
+  background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.8));
+  border-radius: 5px;
+  border: 1px 
+}
+
+.main--section-active {
+  background-size: 200% 200%;
+  animation: activeView 10s ease infinite both;
+  position: relative;
+}
+
+
+.main--section-active:nth-of-type(odd):after {
+  display: inline-block;
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background-color: #96750850;
+  box-shadow: 0 0 1px 1px #ffffff07;
+  border-radius: 100%;
+  top: 10%;
+  left: 85%;
+  animation: activeViewMotion 20s ease-in-out infinite both;
+  transition: 2s ease;
+}
+
+.main--section-active:nth-of-type(odd) .section--wrapper::after {
+  display: inline;
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  background-color: #96750850;
+  bottom: 0%;
+  left: 12.5%;
+  animation: activeViewMotion 20s ease infinite both;
+}
+
+.main--section-active:nth-of-type(even):after {
+  display: inline-block;
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background-color: #96750850;
+  box-shadow: 0 0 1px 1px #ffffff07;
+  border-radius: 100%;
+  top: 10%;
+  right: 85%;
+  animation: activeViewMotion 20s ease-in-out infinite both;
+}
+
+.main--section-active:nth-of-type(even) .section--wrapper::after {
+  display: inline;
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  background-color: #96750850;
+  bottom: 0%;
+  right: 12.5%;
+  animation: activeViewMotion 20s ease infinite both;
+}
+
+
+
+.section--wrapper {
+  padding: 1em 5vw;
+}
+
+.main--section:nth-of-type(odd) .section--wrapper {
+  text-align: left;
+}
+
+.main--section:nth-of-type(even) .section--wrapper {
+  text-align: right;
+}
+
+
+/* RESPONSIVE */
+
+@media (min-width: 768px) {
+  .section--wrapper {
+    width: 70%;
+  }
+
+  .main--section:nth-of-type(odd) .section--wrapper {
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto; 
+  }
+  
+  .main--section:nth-of-type(even) .section--wrapper {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: 50px;
+  }
+}
+
+footer {
+  padding: 0 1em;
+  text-align: center;
+}
