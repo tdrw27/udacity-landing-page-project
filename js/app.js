@@ -10,7 +10,7 @@ const sectionTitles = [];
 // extracting titles for nav anchors and creating ids based off of section title
 sections.forEach(e => {
   let title = e.childNodes[1];
-  e.setAttribute('id', title.innerText);
+  e.setAttribute('data-nav', title.innerText);
   sectionTitles.push(title.innerHTML)
 });
 
@@ -33,7 +33,7 @@ function makeActive(target) {
 
   const size  = clientRect.height;
   const half = clientRect.height / 2;
-  
+
   if ((clientRect.y + size >= 0) && (clientRect.y <= size)) {
     target.classList.add('main--section-active')
   }
@@ -46,4 +46,11 @@ function makeActive(target) {
 window.addEventListener('scroll', e => {
   const mains = document.querySelectorAll('.main--section')
   mains.forEach(makeActive)
+})
+
+nav.addEventListener('click', e => {
+  console.log(e.target.nodeName)
+  const target = e.target;
+  const ref = document.querySelector(`[data-nav="${target.innerText}"]`);
+  ref.scrollIntoView({behavior: "smooth", block: "center"});
 })
