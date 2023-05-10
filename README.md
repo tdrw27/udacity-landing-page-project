@@ -1,4 +1,4 @@
-# udacity-landing-page-project
+# Udacity Landing Page
 
 My submission for the Udacity Landing Page Project.
 
